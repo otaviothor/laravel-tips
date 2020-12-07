@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\User;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
@@ -46,7 +47,22 @@ class AddressController extends Controller
      */
     public function show(Address $address)
     {
-        //
+        if ($address) {
+            echo "
+                <h1>Endereço</h1>
+                <p>{$address->street}, {$address->number}, {$address->city}/{$address->state}</p>
+            ";
+        }
+
+        $user = $address->user()->first();
+
+        if ($user) {
+            echo "
+                <h1>Dados do usuário</h1>
+                <p>Nome: {$user->name}</p>
+                <p>E-mail: {$user->email}</p>
+            ";
+        }
     }
 
     /**

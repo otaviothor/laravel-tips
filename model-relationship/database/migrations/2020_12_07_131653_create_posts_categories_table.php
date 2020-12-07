@@ -15,7 +15,12 @@ class CreatePostsCategoriesTable extends Migration
     {
         Schema::create('posts_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('post');
+            $table->unsignedBigInteger('category');
             $table->timestamps();
+
+            $table->foreign('post')->references('id')->on('posts')->onDelete('CASCADE');
+            $table->foreign('category')->references('id')->on('categories')->onDelete('CASCADE');
         });
     }
 

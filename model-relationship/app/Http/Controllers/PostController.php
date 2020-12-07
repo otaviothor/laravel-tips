@@ -46,7 +46,38 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        if ($post) {
+            echo "
+                <h1>Artigo</h1>
+                <h3>{$post->title}</h3>
+                <strong>{$post->subtitle}</strong>
+                <p>{$post->content}</p>
+            ";
+        }
+
+        $user = $post->author()->first();
+
+        if ($user) {
+            echo "
+                <h1>Dados do usuário</h1>
+                <p>Nome: {$user->name}</p>
+                <p>E-mail: {$user->email}</p>
+            ";
+        }
+
+        $categories = $post->categories()->get();
+
+        if ($categories) {
+            echo "
+                <h1>Categorias</h1>
+            ";
+
+            foreach ($categories as $category) {
+                echo "
+                    <p>#{$category->id} {$category->title}</p>
+                ";
+            }
+        }
     }
 
     /**
