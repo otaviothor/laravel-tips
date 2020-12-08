@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('site.home');
+});
+
+Route::get('/painel', function () {
+    return view('admin.home');
 });
