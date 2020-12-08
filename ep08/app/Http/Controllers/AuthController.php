@@ -25,7 +25,7 @@ class AuthController extends Controller
     {
 
         if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            return redirect()->back()->withInput()->withErrors(['O e-mail informado não é válido!']);
+            return redirect()->back()->withInput()->withErrors(['O e-mail informado não é válido  !']);
         }
 
         $credentials = [
