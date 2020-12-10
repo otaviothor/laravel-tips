@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::view('form', 'upload.form');
+
+Route::post('upload', 'UploadController@upload')->name('upload');
+
+Route::resource('produtos', 'ProductController')->names('products')->parameters(['produtos' => 'product']);
