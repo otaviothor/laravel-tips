@@ -11,6 +11,19 @@
 |
 */
 
+use App\Mail\newLaravelTips;
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/envio-email', function () {
+
+    $user = new \stdClass();
+    $user->name = "Otávio Barreto";
+    $user->email = "otaviosilva2632@gmail.com";
+    return new newLaravelTips($user);
+
+    // Mail::send(new newLaravelTips($user));
 });
