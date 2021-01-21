@@ -10,16 +10,18 @@ class UserController extends Controller
 {
     public function listUser()
     {
-//        $user = new User();
-//        $user->name = "Otávio Silva";
-//        $user->email = "otavio@gmail.com";
-//        $user->password = Hash::make("123");
-//        $user->save();
-//        echo "<h1>Listagem de usuário</h1>";
-
         $user = User::where('id', 1)->first();
         return view("listUser", [
             "user" => $user
         ]);
+    }
+    public function createUser()
+    {
+       $user = new User();
+       $user->name = "Otávio";
+       $user->email = "otavio9@gmail.com";
+       $user->password = Hash::make("12345");
+       $user->save();
+
     }
 }
